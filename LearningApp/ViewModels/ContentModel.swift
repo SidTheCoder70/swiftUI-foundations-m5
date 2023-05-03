@@ -54,7 +54,7 @@ class ContentModel: ObservableObject {
         do {
             //read the file into a data object
             let styleData = try Data(contentsOf: styleUrl!)
-            
+            // not going to parse as JSON as this file is for html
             self.styleData = styleData
         }
         catch {
