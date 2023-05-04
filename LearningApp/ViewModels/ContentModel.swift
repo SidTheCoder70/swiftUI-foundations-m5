@@ -11,6 +11,10 @@ class ContentModel: ObservableObject {
     //initialize into an empty array of Module
     @Published var modules = [Module]()
     
+    //current module
+    @Published var currentModule: Module?
+    var currentModuleIndex = 0
+    
     //var for parsing the style.html file it's an optional because the first time it will be nil
     var styleData: Data?
     
@@ -19,6 +23,8 @@ class ContentModel: ObservableObject {
         getLocalData()
         
     }
+    
+    //MARK: - data methods
     
     func getLocalData() {
         
@@ -62,5 +68,29 @@ class ContentModel: ObservableObject {
             print("couldn't parse style data")
         }
     }
+    
+    //MARK: - Module navigation methods
+    
+    func beginModule( moduleid:Int) {
+        
+        //find the index for this module id
+        // loop through the modules until the id we have matches
+        for index in 0..<modules.count {
+            
+            if modules[index].id == moduleid {
+                
+                //found the matching module
+                currentModuleIndex = index
+                break
+            }
+        }
+        
+        //set the current module
+        currentModule = modules[currentModuleIndex]
+        
+        
+    }
+    
+    
     
 }

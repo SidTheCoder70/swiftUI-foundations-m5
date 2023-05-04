@@ -24,9 +24,20 @@ struct HomeView: View {
                     LazyVStack {
                         
                         ForEach (model.modules) { module in
+                            
                             VStack(spacing: 20) {
-                                // Learning Card
-                                HomeViewRow(image: module.content.image, title: "Learn \(module.category)", description: module.content.description, count: "\(module.content.lessons.count) Lessons", time: module.content.time)
+                                
+                                //this navigationLink passes the module to ContentView
+                                NavigationLink(destination: ContentView()
+                                    .onAppear(perform: {model.beginModule(moduleid: module.id)}), label: {
+                                    
+                                    // Learning Card now the label of a navigationLink
+                                    
+                                    HomeViewRow(image: module.content.image, title: "Learn \(module.category)", description: module.content.description, count: "\(module.content.lessons.count) Lessons", time: module.content.time)
+                                    
+                                })
+                                
+                                
                                 
                                 // Test Card
                                 HomeViewRow(image: module.test.image, title: "\(module.category) Test", description: module.test.description, count: "\(module.test.questions.count) Questions", time: module.test.time)
@@ -35,6 +46,8 @@ struct HomeView: View {
                     }
                     //padding for the white card (modifier on LazyVStack)
                     .padding()
+                    // set the text to black after the navigationView made it blue
+                    .accentColor(.black)
                 }
                 
             }
