@@ -20,11 +20,20 @@ struct ContentView: View {
                     
                     ForEach(0..<model.currentModule!.content.lessons.count) { index in
                       
-                        ContentViewRow(index: index)
+                        NavigationLink(destination:
+                                                    ContentDetailView()
+                                        .onAppear(perform: {
+                                            model.beginLesson(index)
+                                        }),
+                                       label: {
+                                        ContentViewRow(index: index)
+                                    })
+                        
                     }
                 }
                     
                 }
+            .accentColor(.black)
             .padding()
             //add title but currentModule is an optional, so use the nil coalescing operator ?? and put up a blank string if no currentModule is found
             .navigationTitle("Learn \(model.currentModule?.category ?? "")")

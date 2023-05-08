@@ -29,7 +29,13 @@ struct HomeView: View {
                                 
                                 //this navigationLink passes the module to ContentView
                                 NavigationLink(destination: ContentView()
-                                    .onAppear(perform: {model.beginModule(moduleid: module.id)}), label: {
+                                    .onAppear(perform: {
+                                        model.beginModule(module.id)
+                                    }),
+                                               tag: module.id,
+                                               selection: $model.currentContentSelected,
+                                               
+                                               label: {
                                     
                                     // Learning Card now the label of a navigationLink
                                     
@@ -53,6 +59,8 @@ struct HomeView: View {
             }
             .navigationTitle("Get Started")
         }
+        //must indicate navigation view style in xCode 13+
+        .navigationViewStyle(.stack)
     }
 }
 
