@@ -36,7 +36,7 @@ struct ContentView: View {
             .accentColor(.black)
             .padding()
             //add title but currentModule is an optional, so use the nil coalescing operator ?? and put up a blank string if no currentModule is found
-            .navigationTitle("Learn \(model.currentModule?.category ?? "")")
+            .navigationBarTitle("Learn \(model.currentModule?.category ?? "")")
             }
         }
     }

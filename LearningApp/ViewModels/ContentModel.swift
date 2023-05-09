@@ -19,14 +19,19 @@ class ContentModel: ObservableObject {
     @Published var currentLesson: Lesson?
     var currentLessonIndex = 0
     
+    // Current Question
+    @Published var currentQuestion: Question?
+    var currentQuestionIndex = 0
+    
     //current lesson explanation
-    @Published var lessonDescription = NSAttributedString()
+    @Published var codeText = NSAttributedString()
+    //var for parsing the style.html file it's an optional because the first time it will be nil
+    var styleData: Data?
     
     // current selected content and test
     @Published var currentContentSelected:Int?
+    @Published var currentTestSelected:Int?
     
-    //var for parsing the style.html file it's an optional because the first time it will be nil
-    var styleData: Data?
     
     init() {
         
@@ -97,8 +102,6 @@ class ContentModel: ObservableObject {
         
         //set the current module
         currentModule = modules[currentModuleIndex]
-        
-        
     }
     
     func beginLesson(_ lessonIndex: Int) {
@@ -113,7 +116,7 @@ class ContentModel: ObservableObject {
         // set the current lesson
         currentLesson = currentModule!.content.lessons[currentLessonIndex]
         // we also set the lesson description (see addStyling method below)
-        lessonDescription = addStyling(currentLesson!.explanation)
+        codeText = addStyling(currentLesson!.explanation)
         
     }
     
@@ -129,7 +132,7 @@ class ContentModel: ObservableObject {
             // set the current lesson property
             currentLesson = currentModule!.content.lessons[currentLessonIndex]
             // also set the next lesson description
-            lessonDescription = addStyling(currentLesson!.explanation)
+            codeText = addStyling(currentLesson!.explanation)
         } else {
             // reset the lesson state
             currentLessonIndex = 0
@@ -149,6 +152,23 @@ class ContentModel: ObservableObject {
         // all of the above code can be simplified to this:
         return(currentLessonIndex + 1 < currentModule!.content.lessons.count)
         
+    }
+    
+    func beginTest(_ moduleId:Int) {
+        
+        // set the current module
+        beginModule(moduleId)
+        
+        // set the current question
+        currentQuestionIndex = 0
+        
+        // if there are questions, set the current question to the first one
+        if currentModule?.test.questions.count ?? 0 > 0 {
+            currentQuestion = currentModule!.test.questions[currentQuestionIndex]
+            
+            // Set the Question content
+            codeText = addStyling(currentQuestion!.content)
+        }
     }
     
     //code styling
