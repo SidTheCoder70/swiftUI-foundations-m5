@@ -17,6 +17,7 @@
 		11535A7A2A04B2C0005C0BBC /* CodeTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11535A792A04B2C0005C0BBC /* CodeTextView.swift */; };
 		11535AB42A09889A005C0BBC /* RectangleCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11535AB32A09889A005C0BBC /* RectangleCard.swift */; };
 		11535AE62A0ABCF7005C0BBC /* TestView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11535AE52A0ABCF7005C0BBC /* TestView.swift */; };
+		11E4198E2A0C488F003D1E6E /* TestResultView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11E4198D2A0C488F003D1E6E /* TestResultView.swift */; };
 		11E4E7D22A01CD13000859DD /* LearningApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11E4E7D12A01CD13000859DD /* LearningApp.swift */; };
 		11E4E7D42A01CD13000859DD /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11E4E7D32A01CD13000859DD /* HomeView.swift */; };
 		11E4E7D62A01CD15000859DD /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 11E4E7D52A01CD15000859DD /* Assets.xcassets */; };
@@ -37,6 +38,7 @@
 		11535A792A04B2C0005C0BBC /* CodeTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CodeTextView.swift; sourceTree = "<group>"; };
 		11535AB32A09889A005C0BBC /* RectangleCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RectangleCard.swift; sourceTree = "<group>"; };
 		11535AE52A0ABCF7005C0BBC /* TestView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestView.swift; sourceTree = "<group>"; };
+		11E4198D2A0C488F003D1E6E /* TestResultView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestResultView.swift; sourceTree = "<group>"; };
 		11E4E7CE2A01CD13000859DD /* LearningApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LearningApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		11E4E7D12A01CD13000859DD /* LearningApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LearningApp.swift; sourceTree = "<group>"; };
 		11E4E7D32A01CD13000859DD /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
@@ -118,6 +120,7 @@
 				11535AE52A0ABCF7005C0BBC /* TestView.swift */,
 				11535A792A04B2C0005C0BBC /* CodeTextView.swift */,
 				11535AB32A09889A005C0BBC /* RectangleCard.swift */,
+				11E4198D2A0C488F003D1E6E /* TestResultView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -228,6 +231,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				11535AE62A0ABCF7005C0BBC /* TestView.swift in Sources */,
+				11E4198E2A0C488F003D1E6E /* TestResultView.swift in Sources */,
 				11535A3F2A035809005C0BBC /*  Constants.swift in Sources */,
 				11E4E7D42A01CD13000859DD /* HomeView.swift in Sources */,
 				11535A342A02E0CA005C0BBC /* HomeViewRow.swift in Sources */,
