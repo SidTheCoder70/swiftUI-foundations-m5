@@ -34,9 +34,11 @@ class ContentModel: ObservableObject {
     
     
     init() {
-        
+        //this starts the parsing of the local JSON file
         getLocalData()
         
+        // this starts the parsing of the remote hosted JSON file (on GitHub pages)
+        getRemoteData()
     }
     
     //MARK: - data methods
@@ -82,6 +84,54 @@ class ContentModel: ObservableObject {
             // log error
             print("couldn't parse style data")
         }
+    }
+    
+    func getRemoteData() {
+        
+        // String path to remote JSON file on GitHub
+        let urlString = "https://sidthecoder70.github.io/learningapp-data/data2.json"
+        
+        // Create a URL object from the URL string above
+        let  url = URL(string: urlString)
+        
+        // the code above could generate a nil response, so guard against it:
+        guard url != nil else {
+            // couldn't create url
+            return
+        }
+        
+        // create URLRequest object
+        let request = URLRequest(url: url!)
+        
+        // Get the session and kick off the task
+        let session = URLSession.shared
+        
+        let dataTask = session.dataTask(with: request) { data, response, error in
+            
+            // Check if there's an error
+            guard error == nil else {
+                // there was an error
+                return
+            }
+            
+            do {
+                // Create JSON decoder
+                let decoder = JSONDecoder()
+                
+                // Decode the JSON
+                let modules = try decoder.decode([Module].self, from: data!)
+                
+                // Append parsed modules into modules property
+                self.modules += modules
+            }
+            catch {
+                // Couldn't parse remote JSON
+            }
+            
+        }
+        
+        // Kick off the dataTask
+        dataTask.resume()
     }
     
     //MARK: - Module navigation methods

@@ -56,6 +56,7 @@ struct HomeView: View {
                                 
                                 
                             }
+                            .padding(.bottom, 12)
                         }
                     }
                     //padding for the white card (modifier on LazyVStack)
